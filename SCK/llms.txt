@@ -1,0 +1,25 @@
+# Linx Self-Checkout - Central de Conhecimento e Ajuda Viva (V1)
+> Documentação oficial de engenharia, implantação, regras de negócio e operação do Linx Self-Checkout.
+
+## Módulos Principais
+
+- [Início e Boas-Vindas](/01-inicio-e-boas-vindas/): Visão geral do produto, periféricos homologados, telas de descanso e carrossel de mídias.
+- [Identificação do Cliente](/02-identificacao-cliente/): Inserção de CPF/CNPJ, regras fiscais de obrigatoriedade por UF (`self-checkout.fiscal.mandatory-fields`), integração com programas de fidelidade.
+- [Escaneamento & Carrinho](/03-escaneamento-e-carrinho/): Bipagem ótica 1D/2D, digitação manual pelo teclado virtual, e identificação em lote por RFID (`self-checkout.rfid.*`), conferência por balança (`self-checkout.scale.*`).
+- [Descontos & Promoções](/04-descontos-e-promocoes/): Comportamento do terminal frente ao motor promocional Storex Cloud. Exibição de descontos por item, combos e regras progressivas.
+- [Pagamentos & TEF](/05-pagamentos-e-tef/): Pagamentos com cartão de crédito/débito via SiTef (`self-checkout.eft.*`, `self-checkout.pinpad.*`) e Pix Dinâmico em tela com baixa automática.
+- [Emissão e Envio de Cupom](/06-emissao-e-envio-cupom/): Impressão térmica (NFC-e/CF-e/SAT) e envio pós-venda do cupom por e-mail via servidor SMTP (`LINX-WEBSERVICES-GLOBAL / E-MAIL` e `SELF-CHECKOUT - GLOBAL / RECEIPT`).
+- [Pesquisa de Satisfação NPS](/07-pesquisa-nps/): Avaliação em escala de 0 a 10 no término da compra, integração assíncrona com Formbricks (`SELF-CHECKOUT - GLOBAL / SURVEY`).
+- [Intervenções do Operador](/08-intervencoes-operador/): Autenticação de fiscal/operador, cancelamento de item, cancelamento de cupom/venda, acesso ao menu fiscal e abertura de gaveta.
+- [Perguntas Frequentes (FAQ)](/09-perguntas-frequentes/): Respostas rápidas para dúvidas recorrentes de Vendas, Suporte e Clientes.
+
+## Parâmetros Críticos do Sistema
+- `self-checkout.survey.enabled`: Habilita pesquisa de satisfação NPS no totem.
+- `self-checkout.survey.survey-id` e `question-id`: Identificadores da pesquisa no Formbricks.
+- `survey.formbricks.api-key`: Chave de autenticação no serviço Formbricks.
+- `self-checkout.fiscal.mandatory-fields`: Identificação fiscal do cliente por UF.
+- `self-checkout.eft.server.secondary.ip` e `port`: Conexão com servidor TEF (SiTef).
+- `self-checkout.printer.columns`: Número de colunas da impressora térmica (padrão 56).
+- `self-checkout.printer.alignment-mode`: Alinhamento de impressão (HARDWARE / SOFTWARE).
+- `LINX-WEBSERVICES-GLOBAL / E-MAIL`: Configurações de SMTP para envio de comprovante por e-mail.
+- `self-checkout.rfid.enabled`: Habilita antena/caixa de leitura RFID.
